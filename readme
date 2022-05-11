@@ -1,0 +1,25 @@
+swagger 3.0
+
+http://localhost:8080/swagger-ui/index.html#/
+
+________________________________________________
+Instrukcje kafka:
+
+Pobranie Kafki ze strony https://www.apache.org/dyn/closer.cgi?path=/kafka/3.1.0/kafka_2.12-3.1.0.tgz
+(działająca wersja bez problemów kafka_2.12-1.1.0)
+
+Wypakowanie pliku na dysku do N:\Programy
+
+Wchodzimy w lokalizacje N:\Programy\kafka\bin\windows i uruchamiamy konsole windows (cmd)
+
+Uruchamiamy serwer zookepera poleceniem:
+    zookeeper-server-start.bat N:\Programy\kafka\config\zookeeper.properties
+
+Uruchamiamy serwer kafki w nowej konsoli
+    kafka-server-start.bat N:\Programy\kafka\config\server.properties
+
+Tworzymy topic w nowej konsoli (email) - nazwa topica
+    kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 -topic email
+
+Polecenie które zdejmuje dane z topica
+    kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic email

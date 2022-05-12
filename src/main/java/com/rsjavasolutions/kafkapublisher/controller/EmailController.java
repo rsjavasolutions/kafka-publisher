@@ -21,17 +21,11 @@ public class EmailController {
 
     private static final String EMAIL_TOPIC = "email";
 
-    @GetMapping("{text}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void sendTextMessage(@PathVariable String text) {
-        template.send(EMAIL_TOPIC, text);
-        log.info("Data text published: {}", text);
-    }
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void sendObjectMessage(@RequestBody @Valid Email email) {
         template.send(EMAIL_TOPIC, email);
+
         log.info("Data object published: {}", email);
     }
 }

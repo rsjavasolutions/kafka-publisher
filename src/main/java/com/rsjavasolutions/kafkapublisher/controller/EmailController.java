@@ -12,7 +12,7 @@ import javax.validation.Valid;
 
 @Slf4j
 @RestController
-@RequestMapping("email")
+@RequestMapping("emails")
 @RequiredArgsConstructor
 public class EmailController {
 
@@ -26,6 +26,6 @@ public class EmailController {
     public void sendObjectMessage(@RequestBody @Valid Email email) {
         template.send(EMAIL_TOPIC, email);
 
-        log.info("Data object published: {}", email);
+        log.info("Email object published: {}", email);
     }
 }
